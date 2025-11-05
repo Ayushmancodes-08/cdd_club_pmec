@@ -1,19 +1,13 @@
-// app/layout.tsx
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google"; // Removed: Cannot be resolved in this environment
 import "./globals.css";
 
 import Header from "./components/Header";
-<<<<<<< HEAD
 import Footer from "./components/Footer";
-// NO global background components are imported here
-=======
-import FullPageGridBackground from "./components/GridBackground";
->>>>>>> 528c098c898fd56b045b64d101edbe2cbf60c854
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+// const inter = Inter({ subsets: ["latin"], variable: "--font-inter" }); // Removed
 
-export const metadata = {
+export const metadata: Metadata = { // Added 'Metadata' type for clarity
   title: "Coding Design Development Club",
   description:
     "When Code Meets Creativity, Magic Happens. Join the CDD Club to collaborate, explore, and create the future.",
@@ -28,20 +22,14 @@ export default function RootLayout({
     <html lang="en" className="dark scroll-smooth">
       {/*
         --- THIS IS THE FIX ---
-<<<<<<< HEAD
         'bg-gray-950' has been REMOVED from the body tag.
         The body is now transparent, allowing the fixed backgrounds
-        on the homepage to be visible.
+        on the homepage (or any other page) to be visible.
+        'overflow-x-hidden' prevents horizontal scrollbars.
       */}
-      <body className={`${inter.variable} font-sans text-white overflow-x-hidden`}>
-=======
-        'bg-gray-950' has been REMOVED from the body.
-        The body is now transparent, allowing the grid to be visible.
-      */}
-      <body className={`${inter.variable} font-sans text-white`}>
-        <FullPageGridBackground />
-
->>>>>>> 528c098c898fd56b045b64d101edbe2cbf60c854
+      <body
+        className={`font-sans text-white overflow-x-hidden`} // Removed 'inter.variable'
+      >
         <Header />
         {children}
         <Footer />
